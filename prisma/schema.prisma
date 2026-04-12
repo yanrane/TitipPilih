@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  label       String
+  description String    @db.Text
+  products    Product[]
+  reviews     Review[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Kurator {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  bio         String   @db.Text
+  initials    String   @db.VarChar(2)
+  accentColor String   // Tailwind CSS class string e.g. "text-blue-400 bg-blue-500/20 border-blue-500/30"
+  categories  String[] // display tags
+  reviews     Review[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Product {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  title        String
+  image        String    @default("")
+  categorySlug String
+  category     Category  @relation(fields: [categorySlug], references: [slug])
+  rating       Float     // 0–10
+  priceMin     Int       // in IDR
+  priceMax     Int?      // in IDR, nullable
+  affiliateUrl String
+  trending     Boolean   @default(false)
+  review       Review?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  title        String
+  categorySlug String
+  category     Category @relation(fields: [categorySlug], references: [slug])
+  productId    String?  @unique
+  product      Product? @relation(fields: [productId], references: [id])
+  rating       Float    // 0–10
+  priceMin     Int      // in IDR
+  priceMax     Int?     // in IDR, nullable
+  affiliateUrl String
+  kuratorId    String
+  kurator      Kurator  @relation(fields: [kuratorId], references: [id])
+  tanggal      DateTime
+  estimasiBaca Int      // menit
+  pros         String[]
+  cons         String[]
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model DonationWeek {
+  id              String      @id @default(cuid())
+  periode         String      // "1 April – 7 April 2026"
+  periodeStart    DateTime
+  periodeEnd      DateTime
+  totalKomisi     Int         // IDR
+  totalDisisihkan Int         // IDR
+  persentase      Int         @default(15) // %
+  recipients      Recipient[]
+  createdAt       DateTime    @default(now())
+}
+
+model Recipient {
+  id             String       @id @default(cuid())
+  donationWeekId String
+  donationWeek   DonationWeek @relation(fields: [donationWeekId], references: [id], onDelete: Cascade)
+  foto           String       @default("")
+  inisial        String       // "Bpk. S." — NO full name (privacy)
+  wilayah        String       // kelurahan/kota only — NO full address
+  nominal        Int          // IDR
+  tanggal        DateTime
+  createdAt      DateTime     @default(now())
+}

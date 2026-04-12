@@ -1,7 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      // Tokopedia CDN
+      { protocol: 'https', hostname: 'images.tokopedia.net' },
+      { protocol: 'https', hostname: 'img.tokopedia.net' },
+      // Shopee CDN
+      { protocol: 'https', hostname: 'cf.shopee.co.id' },
+      { protocol: 'https', hostname: 'down-id.img.susercontent.com' },
+      // Lazada CDN
+      { protocol: 'https', hostname: 'images.tokopedia.com' },
+      { protocol: 'https', hostname: 'sg-live.slatic.net' },
+      // Generic CDN (Cloudinary, S3, etc.)
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
+      { protocol: 'https', hostname: '*.amazonaws.com' },
+    ],
+  },
 };
 
 export default nextConfig;
