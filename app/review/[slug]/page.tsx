@@ -50,6 +50,7 @@ export default async function ReviewPage({ params }: Props) {
           kurator={review.kurator}
           tanggal={review.tanggal}
           estimasiBaca={review.estimasiBaca}
+          image={review.image}
         />
 
         {/* 2-column layout: article content (left) + sticky sidebar (right) */}
@@ -71,7 +72,7 @@ export default async function ReviewPage({ params }: Props) {
             <div className="sticky top-24">
               <ProductSidebar
                 title={review.title}
-                image=""
+                image={review.image ?? ''}
                 rating={review.rating}
                 priceMin={review.priceMin}
                 priceMax={review.priceMax}
@@ -85,7 +86,7 @@ export default async function ReviewPage({ params }: Props) {
         <div className="lg:hidden mt-8">
           <ProductSidebar
             title={review.title}
-            image=""
+            image={review.image ?? ''}
             rating={review.rating}
             priceMin={review.priceMin}
             priceMax={review.priceMax}

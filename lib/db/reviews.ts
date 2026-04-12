@@ -7,6 +7,7 @@ export interface ReviewData {
   slug: string
   title: string
   category: CategorySlug
+  image?: string
   rating: number
   priceMin: number
   priceMax?: number
@@ -221,6 +222,7 @@ function mapReview(r: {
   priceMax: number | null
   affiliateUrl: string
   kurator: { name: string }
+  product: { image: string } | null
   tanggal: Date
   estimasiBaca: number
   pros: string[]
@@ -230,6 +232,7 @@ function mapReview(r: {
     slug: r.slug,
     title: r.title,
     category: r.categorySlug as CategorySlug,
+    image: r.product?.image || undefined,
     rating: r.rating,
     priceMin: r.priceMin,
     priceMax: r.priceMax ?? undefined,
@@ -252,7 +255,7 @@ export async function getReviewBySlug(slug: string): Promise<ReviewData> {
   try {
     const review = await prisma.review.findUnique({
       where: { slug, published: true },
-      include: { kurator: true },
+      include: { kurator: true, product: { select: { image: true } } },
     })
     return review ? mapReview(review) : (REVIEWS_FALLBACK.find((r) => r.slug === slug) ?? generateFallback(slug))
   } catch {
