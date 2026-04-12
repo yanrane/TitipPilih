@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import type { Recipient } from '@prisma/client'
 import type { DonationStats, RecipientCardProps } from '@/types'
 import type { WeeklyReport } from '@/components/donasi/DonationTimeline'
 
@@ -110,7 +111,7 @@ export async function getCurrentWeekReport(): Promise<typeof CURRENT_WEEK_FALLBA
       totalKomisi: week.totalKomisi,
       totalDisisihkan: week.totalDisisihkan,
       jumlahPenerima: week.recipients.length,
-      penerima: week.recipients.map((r) => ({
+      penerima: week.recipients.map((r: Recipient) => ({
         foto: r.foto,
         inisial: r.inisial,
         wilayah: r.wilayah,
@@ -135,7 +136,7 @@ export async function getDonationTimeline(): Promise<WeeklyReport[]> {
       periode: w.periode,
       totalKomisi: w.totalKomisi,
       totalDisisihkan: w.totalDisisihkan,
-      penerima: w.recipients.map((r) => ({
+      penerima: w.recipients.map((r: Recipient) => ({
         foto: r.foto,
         inisial: r.inisial,
         wilayah: r.wilayah,
