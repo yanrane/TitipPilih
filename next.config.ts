@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
       // Lazada CDN
       { protocol: 'https', hostname: 'images.tokopedia.com' },
       { protocol: 'https', hostname: 'sg-live.slatic.net' },
+      // Apple Newsroom
+      { protocol: 'https', hostname: 'www.apple.com' },
       // Generic CDN (Cloudinary, S3, etc.)
       { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'https', hostname: '*.amazonaws.com' },
