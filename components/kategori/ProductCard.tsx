@@ -19,21 +19,15 @@ export function ProductCard({
   return (
     <div className="group flex flex-col bg-card border border-white/10 rounded-xl overflow-hidden hover:border-primary/40 transition-colors">
       {/* Thumbnail */}
-      {image ? (
-        <div className="relative aspect-square">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover"
-          />
-        </div>
-      ) : (
-        <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-5xl select-none">
-          🛍️
-        </div>
-      )}
+      <div className="relative aspect-square">
+        <Image
+          src={image || `https://picsum.photos/seed/${slug}/400/400`}
+          alt={title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+        />
+      </div>
 
       <div className="p-4 flex flex-col gap-2 flex-1">
         <CategoryBadge category={category} />

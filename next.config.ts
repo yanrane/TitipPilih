@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
       // Generic CDN (Cloudinary, S3, etc.)
       { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'https', hostname: '*.amazonaws.com' },
+      // Placeholder images (development)
+      { protocol: 'https', hostname: 'picsum.photos' },
+      { protocol: 'https', hostname: 'fastly.picsum.photos' },
     ],
   },
 };

@@ -18,22 +18,16 @@ export function ProductSidebar({
   return (
     <div className="bg-card border border-white/10 rounded-2xl overflow-hidden">
       {/* Product image */}
-      {image ? (
-        <div className="relative aspect-square">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="340px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      ) : (
-        <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-7xl select-none">
-          🛍️
-        </div>
-      )}
+      <div className="relative aspect-square">
+        <Image
+          src={image || `https://picsum.photos/seed/${encodeURIComponent(title)}/400/400`}
+          alt={title}
+          fill
+          sizes="340px"
+          className="object-cover"
+          priority
+        />
+      </div>
 
       <div className="p-5 flex flex-col gap-4">
         {/* Title */}

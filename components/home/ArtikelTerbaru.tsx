@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Clock, User } from 'lucide-react'
 import { CategoryBadge } from '@/components/shared/CategoryBadge'
@@ -9,9 +10,15 @@ function ArticleCard({ slug, title, category, kurator, estimasiBaca }: ArticlePr
       href={`/review/${slug}`}
       className="group flex flex-col bg-card border border-white/10 rounded-xl overflow-hidden hover:border-primary/40 transition-colors"
     >
-      {/* Thumbnail placeholder */}
-      <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-4xl select-none">
-        📝
+      {/* Thumbnail */}
+      <div className="relative aspect-video">
+        <Image
+          src={`https://picsum.photos/seed/${slug}/800/450`}
+          alt={title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+        />
       </div>
 
       <div className="p-4 flex flex-col gap-2 flex-1">

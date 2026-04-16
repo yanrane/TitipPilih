@@ -14,16 +14,6 @@ const categoryLabels: Record<CategorySlug, string> = {
   olahraga: 'Olahraga',
 }
 
-// Category-specific emoji for hero image placeholder
-const categoryEmoji: Record<CategorySlug, string> = {
-  gadget: '📱',
-  fashion: '👗',
-  kesehatan: '💊',
-  travel: '✈️',
-  rumah: '🏠',
-  kecantikan: '💄',
-  olahraga: '👟',
-}
 
 interface ArticleHeaderProps {
   title: string
@@ -43,7 +33,6 @@ export function ArticleHeader({
   image,
 }: ArticleHeaderProps) {
   const categoryLabel = categoryLabels[category]
-  const emoji = categoryEmoji[category]
 
   // Derive kurator initials for avatar placeholder
   const initials = kurator
@@ -107,25 +96,16 @@ export function ArticleHeader({
       </div>
 
       {/* Hero image */}
-      {image ? (
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 65vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-      ) : (
-        <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-white/10 flex items-center justify-center overflow-hidden">
-          <div className="flex flex-col items-center gap-3">
-            <span className="text-8xl select-none">{emoji}</span>
-            <span className="text-sm text-muted-foreground font-medium">{title}</span>
-          </div>
-        </div>
-      )}
+      <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10">
+        <Image
+          src={image || `https://picsum.photos/seed/${encodeURIComponent(title)}/1200/675`}
+          alt={title}
+          fill
+          sizes="(max-width: 1024px) 100vw, 65vw"
+          className="object-cover"
+          priority
+        />
+      </div>
     </header>
   )
 }
