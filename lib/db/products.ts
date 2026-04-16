@@ -4,22 +4,22 @@ import type { ProductCardProps, CategorySlug } from '@/types'
 // ── Fallback data (used when DB is not yet connected) ──────────────────────
 
 const TRENDING_FALLBACK: ProductCardProps[] = [
-  { image: '', title: 'Samsung Galaxy S25 Ultra', category: 'gadget', rating: 9.2, priceMin: 18_999_000, priceMax: 21_999_000, slug: 'samsung-galaxy-s25-ultra', affiliateUrl: 'https://shopee.co.id' },
-  { image: '', title: 'Adidas Ultraboost 24', category: 'olahraga', rating: 8.8, priceMin: 1_899_000, priceMax: 2_200_000, slug: 'adidas-ultraboost-24', affiliateUrl: 'https://tokopedia.com' },
-  { image: '', title: 'Dyson Airwrap Complete Long', category: 'kecantikan', rating: 9.5, priceMin: 7_999_000, slug: 'dyson-airwrap-complete', affiliateUrl: 'https://lazada.co.id' },
+  { image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=600&fit=crop&auto=format', title: 'Samsung Galaxy S25 Ultra', category: 'gadget', rating: 9.2, priceMin: 18_999_000, priceMax: 21_999_000, slug: 'samsung-galaxy-s25-ultra', affiliateUrl: 'https://shopee.co.id' },
+  { image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop&auto=format', title: 'Adidas Ultraboost 24', category: 'olahraga', rating: 8.8, priceMin: 1_899_000, priceMax: 2_200_000, slug: 'adidas-ultraboost-24', affiliateUrl: 'https://tokopedia.com' },
+  { image: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=600&h=600&fit=crop&auto=format', title: 'Dyson Airwrap Complete Long', category: 'kecantikan', rating: 9.5, priceMin: 7_999_000, slug: 'dyson-airwrap-complete', affiliateUrl: 'https://lazada.co.id' },
 ]
 
 const CATEGORY_FALLBACK: Record<CategorySlug, ProductCardProps[]> = {
   gadget: [
-    { image: '', title: 'Samsung Galaxy S25 Ultra', category: 'gadget', rating: 9.2, priceMin: 18_999_000, priceMax: 21_999_000, slug: 'samsung-galaxy-s25-ultra', affiliateUrl: '#' },
-    { image: '', title: 'iPhone 16 Pro Max 256GB', category: 'gadget', rating: 9.0, priceMin: 22_000_000, priceMax: 24_500_000, slug: 'iphone-16-pro-max', affiliateUrl: '#' },
-    { image: '', title: 'Xiaomi 14T Pro 12/256GB', category: 'gadget', rating: 8.5, priceMin: 8_499_000, priceMax: 9_999_000, slug: 'xiaomi-14t-pro', affiliateUrl: '#' },
-    { image: '', title: 'Sony WH-1000XM5 Headphone', category: 'gadget', rating: 9.3, priceMin: 4_199_000, priceMax: 4_999_000, slug: 'sony-wh-1000xm5', affiliateUrl: '#' },
-    { image: '', title: 'MacBook Air M3 13"', category: 'gadget', rating: 9.4, priceMin: 16_999_000, priceMax: 18_999_000, slug: 'macbook-air-m3', affiliateUrl: '#' },
-    { image: '', title: 'iPad Pro M4 11" WiFi', category: 'gadget', rating: 9.1, priceMin: 14_999_000, priceMax: 16_499_000, slug: 'ipad-pro-m4', affiliateUrl: '#' },
-    { image: '', title: 'Redmi Note 13 Pro+ 12/512GB', category: 'gadget', rating: 8.2, priceMin: 5_199_000, priceMax: 6_299_000, slug: 'redmi-note-13-pro', affiliateUrl: '#' },
-    { image: '', title: 'Samsung Galaxy Tab S9 FE', category: 'gadget', rating: 7.8, priceMin: 6_999_000, priceMax: 7_999_000, slug: 'samsung-galaxy-tab-s9-fe', affiliateUrl: '#' },
-    { image: '', title: 'Anker 737 Power Bank 24000mAh', category: 'gadget', rating: 8.6, priceMin: 1_299_000, slug: 'anker-737-powerbank', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=600&fit=crop&auto=format', title: 'Samsung Galaxy S25 Ultra', category: 'gadget', rating: 9.2, priceMin: 18_999_000, priceMax: 21_999_000, slug: 'samsung-galaxy-s25-ultra', affiliateUrl: '#' },
+    { image: '/iphone-17-pro-max.png', title: 'iPhone 17 Pro Max 256GB', category: 'gadget', rating: 9.2, priceMin: 24_999_000, priceMax: 27_999_000, slug: 'iphone-17-pro-max', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&auto=format', title: 'Xiaomi 14T Pro 12/256GB', category: 'gadget', rating: 8.5, priceMin: 8_499_000, priceMax: 9_999_000, slug: 'xiaomi-14t-pro', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop&auto=format', title: 'Sony WH-1000XM5 Headphone', category: 'gadget', rating: 9.3, priceMin: 4_199_000, priceMax: 4_999_000, slug: 'sony-wh-1000xm5', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=600&fit=crop&auto=format', title: 'MacBook Air M3 13"', category: 'gadget', rating: 9.4, priceMin: 16_999_000, priceMax: 18_999_000, slug: 'macbook-air-m3', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=600&fit=crop&auto=format', title: 'iPad Pro M4 11" WiFi', category: 'gadget', rating: 9.1, priceMin: 14_999_000, priceMax: 16_499_000, slug: 'ipad-pro-m4', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&auto=format', title: 'Redmi Note 13 Pro+ 12/512GB', category: 'gadget', rating: 8.2, priceMin: 5_199_000, priceMax: 6_299_000, slug: 'redmi-note-13-pro', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&h=600&fit=crop&auto=format', title: 'Samsung Galaxy Tab S9 FE', category: 'gadget', rating: 7.8, priceMin: 6_999_000, priceMax: 7_999_000, slug: 'samsung-galaxy-tab-s9-fe', affiliateUrl: '#' },
+    { image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=600&h=600&fit=crop&auto=format', title: 'Anker 737 Power Bank 24000mAh', category: 'gadget', rating: 8.6, priceMin: 1_299_000, slug: 'anker-737-powerbank', affiliateUrl: '#' },
   ],
   fashion: [
     { image: '', title: 'Uniqlo Ultra Light Down Jacket', category: 'fashion', rating: 8.8, priceMin: 799_000, priceMax: 999_000, slug: 'uniqlo-ultra-light-down', affiliateUrl: '#' },

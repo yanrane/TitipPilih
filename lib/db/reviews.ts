@@ -23,9 +23,35 @@ export interface ReviewData {
 
 const REVIEWS_FALLBACK: ReviewData[] = [
   {
+    slug: 'iphone-17-pro-max',
+    title: 'iPhone 17 Pro Max 256GB',
+    category: 'gadget',
+    image: '/iphone-17-pro-max.png',
+    rating: 9.2,
+    priceMin: 24_999_000,
+    priceMax: 27_999_000,
+    affiliateUrl: 'https://tokopedia.com',
+    kurator: 'Andi Kurniawan',
+    tanggal: '10 April 2026',
+    estimasiBaca: 11,
+    pros: [
+      'Chip A19 Pro dengan performa GPU terkencang di kelas mobile',
+      'Kamera 48MP terbaru dengan zoom periskop 5x dan Night Mode generasi baru',
+      'Desain aluminium alloy baru lebih ringan dibanding titanium generasi lalu',
+      'Layar Super Retina XDR ProMotion 120Hz paling terang di iPhone',
+      'Daya tahan baterai terbaik sepanjang sejarah iPhone',
+    ],
+    cons: [
+      'Harga paling premium di pasar, tidak terjangkau semua kalangan',
+      'Charging speed masih tertinggal dari flagship Android',
+      'Hanya ada di 4 warna, pilihan lebih terbatas dari Android',
+    ],
+  },
+  {
     slug: 'samsung-galaxy-s25-ultra',
     title: 'Samsung Galaxy S25 Ultra',
     category: 'gadget',
+    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=600&fit=crop&auto=format',
     rating: 9.2,
     priceMin: 18_999_000,
     priceMax: 21_999_000,
@@ -270,7 +296,7 @@ export async function getRelatedReviews(
   try {
     const reviews = await prisma.review.findMany({
       where: { published: true, slug: { not: currentSlug }, categorySlug: category },
-      include: { kurator: true },
+      include: { kurator: true, product: { select: { image: true } } },
       orderBy: { createdAt: 'desc' },
       take: 3,
     })

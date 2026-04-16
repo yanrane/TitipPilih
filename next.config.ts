@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
       // Placeholder images (development)
       { protocol: 'https', hostname: 'picsum.photos' },
       { protocol: 'https', hostname: 'fastly.picsum.photos' },
+      // Unsplash (product mockup photos)
+      { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
 };

@@ -13,6 +13,8 @@ const categorySlugList = [
 ]
 
 const reviewSlugList = [
+  'iphone-17-pro-max',
+  'samsung-galaxy-s25-ultra',
   'samsung-galaxy-a55-review',
   'nike-air-zoom-pegasus-review',
   'hanasui-moisturizer-review',

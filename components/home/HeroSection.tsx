@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Heart } from 'lucide-react'
+import Image from 'next/image'
+import { Heart, Star } from 'lucide-react'
 
 export function HeroSection() {
   return (
@@ -47,29 +48,68 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Right — product collage (placeholder, replaced when assets ready) */}
+        {/* Right — featured product card */}
         <div className="hidden md:flex items-center justify-center">
-          <div className="relative w-full max-w-sm aspect-square">
-            {/* Outer glow ring */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/5 blur-2xl" />
-            <div className="relative w-full h-full rounded-3xl border border-white/10 bg-card p-6 grid grid-cols-2 gap-3">
-              {[
-                { emoji: '📱', label: 'Gadget' },
-                { emoji: '👟', label: 'Olahraga' },
-                { emoji: '✈️', label: 'Travel' },
-                { emoji: '💄', label: 'Kecantikan' },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-background border border-white/10 hover:border-primary/30 transition-colors p-4"
-                >
-                  <span className="text-4xl">{item.emoji}</span>
-                  <span className="text-xs text-muted-foreground font-medium">
-                    {item.label}
-                  </span>
+          <div className="relative w-full max-w-sm">
+            {/* Outer glow */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/25 via-secondary/10 to-primary/5 blur-2xl" />
+
+            <Link
+              href="/review/iphone-17-pro-max"
+              className="relative block rounded-3xl border border-white/10 bg-card overflow-hidden hover:border-primary/40 transition-colors group"
+            >
+              {/* Product image */}
+              <div className="relative w-full aspect-video bg-gradient-to-br from-slate-800 to-slate-900">
+                <Image
+                  src="/iphone-17-pro-max.png"
+                  alt="iPhone 17 Pro Max"
+                  fill
+                  sizes="(max-width: 768px) 0px, 384px"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                  priority
+                />
+                {/* Featured badge */}
+                <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                  🔥 Trending
+                </span>
+              </div>
+
+              {/* Product info */}
+              <div className="p-5 flex flex-col gap-3">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">Gadget</p>
+                    <h3 className="font-bold text-foreground text-base leading-snug group-hover:text-primary transition-colors">
+                      iPhone 17 Pro Max 256GB
+                    </h3>
+                  </div>
+                  <div className="flex flex-col items-end shrink-0">
+                    <span className="text-2xl font-bold text-secondary">9.2</span>
+                    <div className="flex items-center gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          size={10}
+                          className={i < 5 ? 'fill-primary text-primary' : 'text-muted-foreground'}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
+
+                <p className="text-sm text-foreground font-semibold">
+                  Mulai{' '}
+                  <span className="text-primary">Rp 24.999.000</span>
+                </p>
+
+                <div className="flex items-center gap-2 pt-1 border-t border-white/10">
+                  <Heart size={12} className="text-secondary fill-secondary shrink-0" />
+                  <p className="text-xs text-muted-foreground">
+                    Sebagian komisi untuk donasi sosial
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
