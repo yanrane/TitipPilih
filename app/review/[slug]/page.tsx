@@ -48,8 +48,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const review = await getReviewBySlug(slug)
   const description = `Review jujur dan mendalam ${review.title} oleh kurator TitipPilih. Kelebihan, kekurangan, dan rekomendasi pembelian.`
+  const pageTitle = review.title.toLowerCase().startsWith('review ')
+    ? review.title
+    : `Review ${review.title}`
   return {
-    title: `Review ${review.title}`,
+    title: pageTitle,
     description,
     keywords: [
       `review ${review.title}`,
@@ -59,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'review jujur TitipPilih',
     ],
     openGraph: {
-      title: `Review ${review.title} | TitipPilih`,
+      title: `${pageTitle} | TitipPilih`,
       description,
       url: `https://titippilih.id/review/${slug}`,
       type: 'article',

@@ -31,6 +31,7 @@ function useCountUp(target: number, duration: number, active: boolean): number {
 export function SocialImpactBanner({ stats }: { stats: DonationStats }) {
   const ref = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
+  const hasData = stats.totalDonasi > 0
 
   useEffect(() => {
     const el = ref.current
@@ -52,7 +53,9 @@ export function SocialImpactBanner({ stats }: { stats: DonationStats }) {
   const totalPenerima = useCountUp(stats.totalPenerima, 1500, visible)
   const persentase = useCountUp(stats.persentase, 1000, visible)
 
-  const progress = Math.round((stats.terkumpulBulan / stats.targetBulan) * 100)
+  const progress = stats.targetBulan > 0
+    ? Math.round((stats.terkumpulBulan / stats.targetBulan) * 100)
+    : 0
 
   return (
     <section
@@ -72,50 +75,63 @@ export function SocialImpactBanner({ stats }: { stats: DonationStats }) {
           </p>
         </div>
 
-        {/* Animated stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10">
-          <div className="text-center">
-            <p className="text-3xl font-bold text-secondary tabular-nums">
-              {formatRupiah(totalDonasi)}
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Total donasi tersalurkan
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl font-bold text-secondary tabular-nums">
-              {totalPenerima}+
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Penerima terbantu
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl font-bold text-secondary tabular-nums">
-              {persentase}%
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Komisi yang disisihkan
-            </p>
-          </div>
-        </div>
+        {hasData ? (
+          <>
+            {/* Animated stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10">
+              <div className="text-center">
+                <p className="text-3xl font-bold text-secondary tabular-nums">
+                  {formatRupiah(totalDonasi)}
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">Total donasi tersalurkan</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-secondary tabular-nums">
+                  {totalPenerima}+
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">Penerima terbantu</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-secondary tabular-nums">
+                  {persentase}%
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">Komisi yang disisihkan</p>
+              </div>
+            </div>
 
-        {/* Progress bar — monthly donation target */}
-        <div className="max-w-xl mx-auto mb-8">
-          <div className="flex justify-between text-xs text-muted-foreground mb-2">
-            <span>Terkumpul {formatRupiah(stats.terkumpulBulan)}</span>
-            <span>Target {formatRupiah(stats.targetBulan)}</span>
+            {/* Progress bar */}
+            <div className="max-w-xl mx-auto mb-8">
+              <div className="flex justify-between text-xs text-muted-foreground mb-2">
+                <span>Terkumpul {formatRupiah(stats.terkumpulBulan)}</span>
+                <span>Target {formatRupiah(stats.targetBulan)}</span>
+              </div>
+              <div className="h-2.5 bg-secondary/20 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-secondary rounded-full transition-all duration-1000 ease-out"
+                  style={{ width: visible ? `${progress}%` : '0%' }}
+                />
+              </div>
+              <p className="text-xs text-center text-muted-foreground mt-1.5">
+                {progress}% dari target bulan ini
+              </p>
+            </div>
+          </>
+        ) : (
+          /* Mission statement — shown before any donation data exists */
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 max-w-2xl mx-auto">
+            {[
+              { icon: '🤝', label: '15% komisi', desc: 'disisihkan untuk donasi setiap minggu' },
+              { icon: '📋', label: 'Transparan', desc: 'setiap rupiah dilaporkan secara terbuka' },
+              { icon: '📍', label: 'Terverifikasi', desc: 'foto & lokasi penerima terdokumentasi' },
+            ].map(item => (
+              <div key={item.label} className="text-center">
+                <p className="text-3xl mb-2">{item.icon}</p>
+                <p className="font-bold text-secondary">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <div className="h-2.5 bg-secondary/20 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-secondary rounded-full transition-all duration-1000 ease-out"
-              style={{ width: visible ? `${progress}%` : '0%' }}
-            />
-          </div>
-          <p className="text-xs text-center text-muted-foreground mt-1.5">
-            {progress}% dari target bulan ini
-          </p>
-        </div>
+        )}
 
         {/* CTA */}
         <div className="text-center">
@@ -123,7 +139,7 @@ export function SocialImpactBanner({ stats }: { stats: DonationStats }) {
             href="/donasi"
             className="inline-block px-6 py-3 bg-secondary text-secondary-foreground font-semibold rounded-lg hover:bg-secondary/90 transition-colors"
           >
-            Lihat Laporan Donasi
+            {hasData ? 'Lihat Laporan Donasi' : 'Pelajari Misi Kami'}
           </Link>
         </div>
       </div>

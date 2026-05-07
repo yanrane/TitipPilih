@@ -118,6 +118,92 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 }
 
+// ─── DELETE /api/products?id=xxx ────────────────────────────────────────────
+
+export async function DELETE(req: NextRequest): Promise<NextResponse> {
+  if (!isAuthorized(req)) {
+    return NextResponse.json({ ok: false, message: 'Unauthorized' }, { status: 401 })
+  }
+
+  const { searchParams } = new URL(req.url)
+  const id = searchParams.get('id')
+
+  if (!id) {
+    return NextResponse.json({ ok: false, message: 'Parameter id wajib diisi' }, { status: 400 })
+  }
+
+  try {
+    const product = await prisma.product.findUnique({ where: { id } })
+    if (!product) {
+      return NextResponse.json({ ok: false, message: 'Produk tidak ditemukan' }, { status: 404 })
+    }
+    await prisma.product.delete({ where: { id } })
+    return NextResponse.json({ ok: true, message: `Produk "${product.title}" berhasil dihapus` })
+  } catch (err) {
+    console.error('[DELETE /api/products]', err)
+    return NextResponse.json({ ok: false, message: 'Internal server error' }, { status: 500 })
+  }
+}
+
+// ─── PATCH /api/products?id=xxx ─────────────────────────────────────────────
+
+interface PatchBody {
+  nama?: string
+  harga?: number
+  hargaMax?: number | null
+  rating?: number
+  url?: string
+  img?: string
+  categorySlug?: string
+  trending?: boolean
+}
+
+export async function PATCH(req: NextRequest): Promise<NextResponse> {
+  if (!isAuthorized(req)) {
+    return NextResponse.json({ ok: false, message: 'Unauthorized' }, { status: 401 })
+  }
+
+  const { searchParams } = new URL(req.url)
+  const id = searchParams.get('id')
+
+  if (!id) {
+    return NextResponse.json({ ok: false, message: 'Parameter id wajib diisi' }, { status: 400 })
+  }
+
+  let body: PatchBody
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ ok: false, message: 'Body tidak valid (JSON required)' }, { status: 400 })
+  }
+
+  try {
+    const product = await prisma.product.findUnique({ where: { id } })
+    if (!product) {
+      return NextResponse.json({ ok: false, message: 'Produk tidak ditemukan' }, { status: 404 })
+    }
+
+    const updated = await prisma.product.update({
+      where: { id },
+      data: {
+        ...(body.nama !== undefined && { title: body.nama }),
+        ...(body.harga !== undefined && { priceMin: body.harga }),
+        ...(body.hargaMax !== undefined && { priceMax: body.hargaMax }),
+        ...(body.rating !== undefined && { rating: Math.min(10, Math.max(0, body.rating * 2)) }),
+        ...(body.url !== undefined && { affiliateUrl: body.url }),
+        ...(body.img !== undefined && { image: body.img }),
+        ...(body.categorySlug !== undefined && { categorySlug: body.categorySlug }),
+        ...(body.trending !== undefined && { trending: body.trending }),
+      },
+    })
+
+    return NextResponse.json({ ok: true, message: `Produk "${updated.title}" berhasil diperbarui` })
+  } catch (err) {
+    console.error('[PATCH /api/products]', err)
+    return NextResponse.json({ ok: false, message: 'Internal server error' }, { status: 500 })
+  }
+}
+
 // ─── GET /api/products ───────────────────────────────────────────────────────
 
 export async function GET(req: NextRequest): Promise<NextResponse> {

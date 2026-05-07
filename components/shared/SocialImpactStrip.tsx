@@ -6,6 +6,8 @@ import { getDonationStats } from '@/lib/db/donations'
 export async function SocialImpactStrip() {
   const stats = await getDonationStats()
 
+  if (stats.totalDonasi === 0) return null
+
   return (
     <div className="w-full bg-secondary/10 border-y border-secondary/20 py-2.5 px-4">
       <div className="mx-auto max-w-7xl flex items-center justify-center gap-2 text-sm text-center flex-wrap">

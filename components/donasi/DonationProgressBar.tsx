@@ -6,9 +6,10 @@ import { formatRupiah } from '@/lib/utils'
 interface DonationProgressBarProps {
   terkumpul: number
   target: number
+  periode?: string
 }
 
-export function DonationProgressBar({ terkumpul, target }: DonationProgressBarProps) {
+export function DonationProgressBar({ terkumpul, target, periode }: DonationProgressBarProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -38,7 +39,7 @@ export function DonationProgressBar({ terkumpul, target }: DonationProgressBarPr
           <span className="text-secondary">Bulan Ini</span>
         </h2>
         <p className="text-xs text-muted-foreground">
-          Periode April 2026 — diperbarui setiap minggu
+          {periode ?? 'Diperbarui setiap minggu'}
         </p>
       </div>
 

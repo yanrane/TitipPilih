@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'fastly.picsum.photos' },
       // Unsplash (product mockup photos)
       { protocol: 'https', hostname: 'images.unsplash.com' },
+      // GSMArena (product specs images)
+      { protocol: 'https', hostname: 'fdn.gsmarena.com' },
+      { protocol: 'https', hostname: 'cdn.gsmarena.com' },
+      // Samsung Global News
+      { protocol: 'https', hostname: 'img.global.news.samsung.com' },
+      { protocol: 'https', hostname: 'images.samsung.com' },
     ],
   },
 };
