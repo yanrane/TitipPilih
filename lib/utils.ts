@@ -5,8 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const formatRupiah = (angka: number): string => {
-  const abs = Math.floor(Math.abs(angka))
-  const formatted = abs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-  return `Rp\u00A0${formatted}`
+export function formatRupiah(angka: number): string {
+  return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka)
 }
