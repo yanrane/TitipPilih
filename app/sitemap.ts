@@ -3,25 +3,25 @@ import type { MetadataRoute } from 'next'
 const BASE_URL = 'https://titippilih.id'
 
 const categorySlugList = [
-  'gadget',
-  'fashion',
-  'kesehatan',
-  'travel',
-  'rumah',
-  'kecantikan',
-  'olahraga',
+  'serum',
+  'moisturizer',
+  'sunscreen',
+  'cleanser',
+  'toner',
+  'eyecare',
+  'bodycare',
 ]
 
 const reviewSlugList = [
-  'iphone-17-pro-max',
-  'samsung-galaxy-s25-ultra',
-  'samsung-galaxy-a55-review',
-  'nike-air-zoom-pegasus-review',
-  'hanasui-moisturizer-review',
-  'xiaomi-redmi-note-13-review',
-  'somethinc-serum-vitamin-c-review',
-  'eiger-adventure-backpack-review',
-  'philips-air-fryer-hd9252-review',
+  'azarine-hydrasoothe-spf45',
+  'skintific-barrier-cream',
+  'somethinc-niacinamide-serum',
+  'cetaphil-gentle-cleanser',
+  'hada-labo-hydrating-cleanser',
+  'scarlett-brightening-serum',
+  'avoskin-miraculous-retinol',
+  'skintific-mugwort-toner',
+  'scarlett-shower-scrub',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

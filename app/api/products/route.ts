@@ -74,7 +74,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     // Resolve categorySlug — fallback to first available if omitted
-    const catSlug = categorySlug ?? 'gadget'
+    const catSlug = categorySlug ?? 'serum'
     const categoryExists = await prisma.category.findUnique({ where: { slug: catSlug } })
     if (!categoryExists) {
       return NextResponse.json(

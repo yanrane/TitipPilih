@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
-const CATEGORIES = ['gadget', 'fashion', 'kesehatan', 'travel', 'rumah', 'kecantikan', 'olahraga']
+const CATEGORIES = ['serum', 'moisturizer', 'sunscreen', 'cleanser', 'toner', 'eyecare', 'bodycare']
 
 interface Product {
   id: string
@@ -26,7 +26,7 @@ const empty = {
   rating: '',
   url: '',
   img: '',
-  categorySlug: 'gadget',
+  categorySlug: 'serum',
   trending: false,
 }
 
