@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       // GSMArena (product specs images)
       { protocol: 'https', hostname: 'fdn.gsmarena.com' },
+      { protocol: 'https', hostname: 'fdn2.gsmarena.com' },
       { protocol: 'https', hostname: 'cdn.gsmarena.com' },
       // Samsung Global News
       { protocol: 'https', hostname: 'img.global.news.samsung.com' },
