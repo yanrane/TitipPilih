@@ -1,11 +1,11 @@
 export type CategorySlug =
-  | 'gadget'
-  | 'fashion'
-  | 'kesehatan'
-  | 'travel'
-  | 'rumah'
-  | 'kecantikan'
-  | 'olahraga'
+  | 'serum'
+  | 'moisturizer'
+  | 'sunscreen'
+  | 'cleanser'
+  | 'toner'
+  | 'eyecare'
+  | 'bodycare'
 
 export interface ProductCardProps {
   image: string
@@ -20,8 +20,8 @@ export interface ProductCardProps {
 
 export interface RecipientCardProps {
   foto: string
-  inisial: string // "Bpk. S."
-  wilayah: string // "Margahayu, Bandung"
+  inisial: string
+  wilayah: string
   nominal: number
   tanggal: string
 }
@@ -43,16 +43,15 @@ export interface LaporanDonasi {
   penerima: RecipientCardProps[]
 }
 
-// Article preview for homepage and listing
 export interface ArticlePreview {
   slug: string
   title: string
   category: CategorySlug
+  image?: string
   kurator: string
   estimasiBaca: number
 }
 
-// Donation stats for SocialImpactBanner and SocialImpactStrip
 export interface DonationStats {
   totalDonasi: number
   totalPenerima: number
@@ -61,13 +60,12 @@ export interface DonationStats {
   targetBulan: number
 }
 
-// Kurator profile for CuratorTeam
 export interface CuratorData {
   id?: string
   name: string
   role: string
   bio: string
   initials: string
-  accentColor: string // Tailwind class string
+  accentColor: string
   categories: string[]
 }
