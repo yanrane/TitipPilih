@@ -1,115 +1,124 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Heart, Star } from 'lucide-react'
+import { Heart, Star, ShieldCheck } from 'lucide-react'
 
 export function HeroSection() {
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left — text content */}
-        <div className="flex flex-col gap-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-            Rekomendasi{' '}
-            <span className="text-primary italic">Jujur</span>
-            {', '}
-            <br className="hidden sm:block" />
-            Berbagi{' '}
-            <span className="text-primary italic">Tulus</span>
-          </h1>
+    <section className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-background to-orange-50/30">
+      {/* Decorative blob shapes */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-100/30 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
 
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-            Kurator terpercaya merekomendasikan produk terbaik untuk Anda.
-            Setiap pembelian berkontribusi untuk sesama — transparan, nyata,
-            terdokumentasi.
-          </p>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left — text content */}
+          <div className="flex flex-col gap-6">
+            {/* Trust badge */}
+            <div className="inline-flex items-center gap-2 bg-white/80 border border-rose-100 rounded-full px-4 py-1.5 w-fit shadow-sm">
+              <ShieldCheck size={14} className="text-primary" />
+              <span className="text-xs font-semibold text-foreground">Review Jujur ✓ Dermatologis Approved</span>
+            </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/kategori/gadget"
-              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Lihat Rekomendasi
-            </Link>
-            <Link
-              href="/donasi"
-              className="px-6 py-3 border border-secondary text-secondary font-semibold rounded-lg hover:bg-secondary/10 transition-colors"
-            >
-              Tentang Donasi
-            </Link>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+              Skincare{' '}
+              <span className="text-primary italic">Terpercaya</span>
+              {', '}
+              <br className="hidden sm:block" />
+              Harga{' '}
+              <span className="text-primary italic">Bersahabat</span>
+            </h1>
+
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+              Kurator kami test langsung di kulit Indonesia — rekomendasi
+              jujur tanpa bias brand. Sebagian komisi untuk donasi sosial
+              yang transparan.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/kategori/serum"
+                className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-sm"
+              >
+                Lihat Review Skincare
+              </Link>
+              <Link
+                href="/donasi"
+                className="px-6 py-3 border border-secondary text-secondary font-semibold rounded-lg hover:bg-secondary/10 transition-colors"
+              >
+                Cara Kerja Donasi
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Heart size={15} className="text-primary fill-primary shrink-0" />
+              <span>
+                Sudah{' '}
+                <strong className="text-foreground">83 orang</strong>{' '}
+                terbantu dari komisi affiliate bulan ini
+              </span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Heart size={15} className="text-secondary fill-secondary shrink-0" />
-            <span>
-              Sudah{' '}
-              <strong className="text-foreground">83 orang</strong>{' '}
-              terbantu bulan ini
-            </span>
-          </div>
-        </div>
+          {/* Right — featured product card */}
+          <div className="hidden md:flex items-center justify-center">
+            <div className="relative w-full max-w-sm">
+              {/* Outer glow */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-orange-200/20 blur-2xl" />
 
-        {/* Right — featured product card */}
-        <div className="hidden md:flex items-center justify-center">
-          <div className="relative w-full max-w-sm">
-            {/* Outer glow */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/25 via-secondary/10 to-primary/5 blur-2xl" />
+              <Link
+                href="/review/azarine-hydrasoothe-spf45"
+                className="relative block rounded-3xl border border-rose-100 bg-white overflow-hidden hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl group"
+              >
+                <div className="relative w-full aspect-video bg-gradient-to-br from-rose-50 to-orange-50">
+                  <Image
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700&h=394&fit=crop&auto=format"
+                    alt="Azarine Hydrasoothe Sunscreen SPF45"
+                    fill
+                    sizes="(max-width: 768px) 0px, 384px"
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                    priority
+                  />
+                  <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-sm">
+                    🔥 Terlaris
+                  </span>
+                </div>
 
-            <Link
-              href="/review/iphone-17-pro-max"
-              className="relative block rounded-3xl border border-white/10 bg-card overflow-hidden hover:border-primary/40 transition-colors group"
-            >
-              {/* Product image */}
-              <div className="relative w-full aspect-video bg-gradient-to-br from-slate-800 to-slate-900">
-                <Image
-                  src="/iphone-17-pro-max.png"
-                  alt="iPhone 17 Pro Max"
-                  fill
-                  sizes="(max-width: 768px) 0px, 384px"
-                  className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                  priority
-                />
-                {/* Featured badge */}
-                <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                  🔥 Trending
-                </span>
-              </div>
-
-              {/* Product info */}
-              <div className="p-5 flex flex-col gap-3">
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">Gadget</p>
-                    <h3 className="font-bold text-foreground text-base leading-snug group-hover:text-primary transition-colors">
-                      iPhone 17 Pro Max 256GB
-                    </h3>
-                  </div>
-                  <div className="flex flex-col items-end shrink-0">
-                    <span className="text-2xl font-bold text-secondary">9.2</span>
-                    <div className="flex items-center gap-0.5">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          size={10}
-                          className={i < 5 ? 'fill-primary text-primary' : 'text-muted-foreground'}
-                        />
-                      ))}
+                <div className="p-5 flex flex-col gap-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">Sunscreen</p>
+                      <h3 className="font-bold text-foreground text-base leading-snug group-hover:text-primary transition-colors">
+                        Azarine Hydrasoothe SPF45 PA++++
+                      </h3>
+                    </div>
+                    <div className="flex flex-col items-end shrink-0">
+                      <span className="text-2xl font-bold text-secondary">9.4</span>
+                      <div className="flex items-center gap-0.5">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            size={10}
+                            className="fill-primary text-primary"
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <p className="text-sm text-foreground font-semibold">
-                  Mulai{' '}
-                  <span className="text-primary">Rp 24.999.000</span>
-                </p>
-
-                <div className="flex items-center gap-2 pt-1 border-t border-white/10">
-                  <Heart size={12} className="text-secondary fill-secondary shrink-0" />
-                  <p className="text-xs text-muted-foreground">
-                    Sebagian komisi untuk donasi sosial
+                  <p className="text-sm text-foreground font-semibold">
+                    Mulai{' '}
+                    <span className="text-primary">Rp 49.000</span>
                   </p>
+
+                  <div className="flex items-center gap-2 pt-1 border-t border-rose-50">
+                    <Heart size={12} className="text-secondary fill-secondary shrink-0" />
+                    <p className="text-xs text-muted-foreground">
+                      Sebagian komisi untuk donasi sosial
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
