@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { X, Camera, Music2 } from 'lucide-react'
 import { formatRupiah } from '@/lib/utils'
+import { getDonationStats } from '@/lib/db/donations'
 
 const kategoriLinks = [
   { label: 'Serum', slug: 'serum' },
@@ -24,9 +25,8 @@ const legalLinks = [
   { label: 'Disclosure Afiliasi', href: '/disclosure' },
 ]
 
-const totalDonasi = 12_450_000
-
-export function Footer() {
+export async function Footer() {
+  const { totalDonasi } = await getDonationStats()
   return (
     <footer className="bg-card border-t border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -40,12 +40,14 @@ export function Footer() {
               Review skincare jujur dari kurator terpercaya. Setiap pembelian
               melalui link kami berkontribusi untuk sesama.
             </p>
-            <div className="mt-2">
-              <p className="text-xs text-muted-foreground mb-1">Total donasi tersalurkan</p>
-              <p className="text-lg font-bold text-secondary">
-                {formatRupiah(totalDonasi)}
-              </p>
-            </div>
+            {totalDonasi > 0 && (
+              <div className="mt-2">
+                <p className="text-xs text-muted-foreground mb-1">Total donasi tersalurkan</p>
+                <p className="text-lg font-bold text-secondary">
+                  {formatRupiah(totalDonasi)}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="grid grid-cols-2 gap-8">
