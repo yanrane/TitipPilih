@@ -2,20 +2,20 @@ import type { CategorySlug } from '@/types'
 
 // Category-specific context snippets for the article
 const categoryContext: Record<CategorySlug, string> = {
-  gadget:
-    'pasar teknologi konsumen Indonesia yang terus berkembang pesat',
-  fashion:
-    'industri fashion Indonesia yang semakin sadar akan kualitas dan keberlanjutan',
-  kesehatan:
-    'meningkatnya kesadaran masyarakat Indonesia akan pentingnya gaya hidup sehat',
-  travel:
-    'gairah masyarakat Indonesia dalam menjelajahi destinasi dalam negeri dan mancanegara',
-  rumah:
-    'tren hunian Indonesia yang semakin mengutamakan estetika dan fungsionalitas',
-  kecantikan:
-    'perkembangan pesat industri kecantikan Indonesia dengan menyeimbangkan produk lokal dan impor',
-  olahraga:
-    'meningkatnya komunitas olahraga aktif di Indonesia, terutama generasi muda',
+  serum:
+    'perkembangan pesat industri skincare Indonesia dengan fokus pada bahan aktif efektif',
+  moisturizer:
+    'meningkatnya kesadaran masyarakat Indonesia tentang pentingnya menjaga hidrasi kulit sehari-hari',
+  sunscreen:
+    'tren pemakaian sunscreen harian yang kian populer di kalangan masyarakat Indonesia',
+  cleanser:
+    'rutinitas double cleansing yang semakin diadopsi oleh pecinta skincare Indonesia',
+  toner:
+    'berkembangnya pemahaman tentang rangkaian skincare yang tepat di kalangan konsumen Indonesia',
+  eyecare:
+    'meningkatnya perhatian terhadap perawatan area mata sebagai bagian dari rutinitas skincare Indonesia',
+  bodycare:
+    'tren perawatan tubuh yang menyeluruh di kalangan masyarakat Indonesia yang sadar kecantikan',
 }
 
 interface ArticleBodyProps {
@@ -46,38 +46,37 @@ export function ArticleBody({ productTitle, category }: ArticleBodyProps) {
 
       {/* Section 1 */}
       <h2 className="text-xl font-bold text-foreground mt-2">
-        Desain & Kualitas Build
+        Tekstur & Cara Pemakaian
       </h2>
       <p>
         Kesan pertama sangat penting, dan{' '}
         <strong className="text-foreground">{productTitle}</strong> berhasil memberikan
-        impresi positif sejak diunboxing. Material yang digunakan terasa premium di
-        tangan, dengan perhatian pada detail yang mencerminkan bahwa produsen
-        benar-benar mempertimbangkan kenyamanan pengguna dalam jangka panjang.
+        impresi positif sejak pertama diaplikasikan. Teksturnya terasa menyenangkan di
+        kulit, dengan formula yang mencerminkan bahwa produsen benar-benar
+        mempertimbangkan iklim tropis Indonesia.
       </p>
       <p>
-        Ergonomi menjadi salah satu kekuatan utama. Setelah digunakan selama beberapa
-        jam berturut-turut, tidak ada keluhan kelelahan yang berarti — sesuatu yang
-        justru sering luput dari perhatian pada produk di kelas harga yang sama.
-        Finishing-nya konsisten dan rapi dari setiap sudut pandang.
+        Kemudahan penggunaan menjadi salah satu kekuatan utama. Produk ini cepat
+        meresap tanpa meninggalkan rasa lengket atau berminyak — sesuatu yang justru
+        sering menjadi keluhan pada produk di kelas harga yang sama. Finishing-nya
+        bersih dan nyaman sepanjang hari.
       </p>
 
       {/* Section 2 */}
       <h2 className="text-xl font-bold text-foreground mt-2">
-        Performa & Penggunaan Sehari-hari
+        Efektivitas & Hasil di Kulit
       </h2>
       <p>
         Inilah yang paling kamu cari. Dalam penggunaan harian selama dua minggu, kami
-        menjalankan berbagai skenario mulai dari pemakaian ringan hingga pengujian batas
-        kemampuan. Hasilnya? Produk ini tampil konsisten tanpa kejutan negatif yang
-        berarti.
+        menjalankan pengujian pada berbagai kondisi kulit — pagi hari sebelum aktivitas
+        hingga malam hari setelah paparan polusi. Hasilnya? Produk ini tampil konsisten
+        tanpa kejutan negatif yang berarti.
       </p>
       <p>
-        Momen-momen paling intens — ketika semua bergantung pada performa maksimal —
-        produk ini bertahan dengan stabil. Tidak ada overheating signifikan, tidak ada
-        penurunan performa tiba-tiba. Hal ini menunjukkan bahwa engineering di balik
-        produk ini dilakukan dengan sungguh-sungguh, bukan sekadar memenuhi angka
-        spesifikasi di atas kertas.
+        Perubahan yang paling terasa setelah pemakaian rutin adalah kulit yang lebih
+        lembab, cerah, dan ternutrisi. Tidak ada iritasi, tidak ada breakout. Ini
+        menunjukkan bahwa formulasi di balik produk ini dilakukan dengan serius, bukan
+        sekadar memenuhi klaim di kemasan.
       </p>
 
       {/* Blockquote highlight */}
@@ -113,14 +112,14 @@ export function ArticleBody({ productTitle, category }: ArticleBodyProps) {
 
       {/* Section 4 — verdict */}
       <h2 className="text-xl font-bold text-foreground mt-2">
-        Kesimpulan: Untuk Siapa Produk Ini?
+        Kesimpulan: Untuk Jenis Kulit Apa?
       </h2>
       <p>
         <strong className="text-foreground">{productTitle}</strong> adalah pilihan
-        solid untuk kamu yang menginginkan keseimbangan antara performa, kualitas,
-        dan nilai investasi jangka panjang. Produk ini tidak ditujukan untuk semua
-        orang — namun untuk target penggunanya, ia memberikan pengalaman yang sulit
-        dikomplain.
+        solid untuk kamu yang menginginkan keseimbangan antara efektivitas, keamanan,
+        dan nilai investasi jangka panjang untuk kulitmu. Produk ini tidak ditujukan
+        untuk semua jenis kulit — namun untuk target penggunanya, ia memberikan
+        pengalaman yang sulit dikomplain.
       </p>
       <p>
         Jika anggaran dan kebutuhan kamu sesuai dengan profil produk ini, kami dengan
