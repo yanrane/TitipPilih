@@ -15,7 +15,7 @@ export function TrendingSection({ products }: TrendingSectionProps) {
           Trending <span className="text-primary">Pekan Ini</span>
         </h2>
         <Link
-          href="/kategori/gadget"
+          href="/kategori/serum"
           className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
         >
           Lihat Semua
