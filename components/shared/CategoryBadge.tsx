@@ -3,23 +3,23 @@ import { cn } from '@/lib/utils'
 import type { CategorySlug } from '@/types'
 
 const categoryColors: Record<CategorySlug, string> = {
-  gadget: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-  fashion: 'bg-pink-500/20 text-pink-300 border-pink-500/30',
-  kesehatan: 'bg-green-500/20 text-green-300 border-green-500/30',
-  travel: 'bg-teal-500/20 text-teal-300 border-teal-500/30',
-  rumah: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
-  kecantikan: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
-  olahraga: 'bg-red-500/20 text-red-300 border-red-500/30',
+  serum: 'bg-rose-100 text-rose-700 border-rose-200',
+  moisturizer: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+  sunscreen: 'bg-amber-100 text-amber-700 border-amber-200',
+  cleanser: 'bg-sky-100 text-sky-700 border-sky-200',
+  toner: 'bg-violet-100 text-violet-700 border-violet-200',
+  eyecare: 'bg-pink-100 text-pink-700 border-pink-200',
+  bodycare: 'bg-orange-100 text-orange-700 border-orange-200',
 }
 
 const categoryLabels: Record<CategorySlug, string> = {
-  gadget: 'Gadget',
-  fashion: 'Fashion',
-  kesehatan: 'Kesehatan',
-  travel: 'Travel',
-  rumah: 'Rumah',
-  kecantikan: 'Kecantikan',
-  olahraga: 'Olahraga',
+  serum: 'Serum',
+  moisturizer: 'Moisturizer',
+  sunscreen: 'Sunscreen',
+  cleanser: 'Pembersih',
+  toner: 'Toner',
+  eyecare: 'Perawatan Mata',
+  bodycare: 'Body Care',
 }
 
 interface CategoryBadgeProps {
