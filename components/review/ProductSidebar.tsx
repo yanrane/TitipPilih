@@ -16,11 +16,11 @@ export function ProductSidebar({
     rating >= 9 ? 'text-secondary' : rating >= 7 ? 'text-primary' : 'text-yellow-400'
 
   return (
-    <div className="bg-card border border-white/10 rounded-2xl overflow-hidden">
+    <div className="bg-card border border-border rounded-2xl overflow-hidden">
       {/* Product image */}
       <div className="relative aspect-square">
         <Image
-          src={image || `https://picsum.photos/seed/${encodeURIComponent(title)}/400/400`}
+          src={image || 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop&auto=format'}
           alt={title}
           fill
           sizes="340px"

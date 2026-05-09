@@ -17,11 +17,11 @@ export function ProductCard({
   const stars = Math.round(rating / 2) // 0–10 → 0–5
 
   return (
-    <div className="group flex flex-col bg-card border border-white/10 rounded-xl overflow-hidden hover:border-primary/40 transition-colors">
+    <div className="group flex flex-col bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-colors">
       {/* Thumbnail */}
       <div className="relative aspect-square">
         <Image
-          src={image || `https://picsum.photos/seed/${slug}/400/400`}
+          src={image || 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop&auto=format'}
           alt={title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
