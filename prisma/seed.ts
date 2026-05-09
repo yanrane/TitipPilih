@@ -21,6 +21,8 @@ async function main() {
   await prisma.product.deleteMany()
   await prisma.category.deleteMany()
   await prisma.kurator.deleteMany()
+  await prisma.recipient.deleteMany()
+  await prisma.donationWeek.deleteMany()
   console.log('✓ Cleared old data')
 
   // ── 1. Kurator ───────────────────────────────────────────────────────────
