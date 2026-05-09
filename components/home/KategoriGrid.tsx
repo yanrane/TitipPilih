@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import {
-  Smartphone,
-  ShoppingBag,
-  Heart,
-  Plane,
-  Home,
+  Droplets,
+  Leaf,
+  Sun,
+  Waves,
+  FlaskConical,
+  Eye,
   Sparkles,
-  Dumbbell,
   type LucideIcon,
 } from 'lucide-react'
 import type { CategorySlug } from '@/types'
@@ -22,60 +22,60 @@ interface CategoryItem {
 
 const categories: CategoryItem[] = [
   {
-    slug: 'gadget',
-    label: 'Gadget',
-    icon: Smartphone,
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/10 hover:bg-blue-500/20',
-    border: 'border-blue-500/20 hover:border-blue-400/40',
+    slug: 'serum',
+    label: 'Serum',
+    icon: Droplets,
+    color: 'text-rose-500',
+    bg: 'bg-rose-50 hover:bg-rose-100',
+    border: 'border-rose-200 hover:border-rose-300',
   },
   {
-    slug: 'fashion',
-    label: 'Fashion',
-    icon: ShoppingBag,
-    color: 'text-pink-400',
-    bg: 'bg-pink-500/10 hover:bg-pink-500/20',
-    border: 'border-pink-500/20 hover:border-pink-400/40',
+    slug: 'moisturizer',
+    label: 'Moisturizer',
+    icon: Leaf,
+    color: 'text-emerald-500',
+    bg: 'bg-emerald-50 hover:bg-emerald-100',
+    border: 'border-emerald-200 hover:border-emerald-300',
   },
   {
-    slug: 'kesehatan',
-    label: 'Kesehatan',
-    icon: Heart,
-    color: 'text-green-400',
-    bg: 'bg-green-500/10 hover:bg-green-500/20',
-    border: 'border-green-500/20 hover:border-green-400/40',
+    slug: 'sunscreen',
+    label: 'Sunscreen',
+    icon: Sun,
+    color: 'text-amber-500',
+    bg: 'bg-amber-50 hover:bg-amber-100',
+    border: 'border-amber-200 hover:border-amber-300',
   },
   {
-    slug: 'travel',
-    label: 'Travel',
-    icon: Plane,
-    color: 'text-teal-400',
-    bg: 'bg-teal-500/10 hover:bg-teal-500/20',
-    border: 'border-teal-500/20 hover:border-teal-400/40',
+    slug: 'cleanser',
+    label: 'Pembersih',
+    icon: Waves,
+    color: 'text-sky-500',
+    bg: 'bg-sky-50 hover:bg-sky-100',
+    border: 'border-sky-200 hover:border-sky-300',
   },
   {
-    slug: 'rumah',
-    label: 'Rumah',
-    icon: Home,
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/10 hover:bg-amber-500/20',
-    border: 'border-amber-500/20 hover:border-amber-400/40',
+    slug: 'toner',
+    label: 'Toner',
+    icon: FlaskConical,
+    color: 'text-violet-500',
+    bg: 'bg-violet-50 hover:bg-violet-100',
+    border: 'border-violet-200 hover:border-violet-300',
   },
   {
-    slug: 'kecantikan',
-    label: 'Kecantikan',
+    slug: 'eyecare',
+    label: 'Mata',
+    icon: Eye,
+    color: 'text-pink-500',
+    bg: 'bg-pink-50 hover:bg-pink-100',
+    border: 'border-pink-200 hover:border-pink-300',
+  },
+  {
+    slug: 'bodycare',
+    label: 'Body Care',
     icon: Sparkles,
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10 hover:bg-purple-500/20',
-    border: 'border-purple-500/20 hover:border-purple-400/40',
-  },
-  {
-    slug: 'olahraga',
-    label: 'Olahraga',
-    icon: Dumbbell,
-    color: 'text-red-400',
-    bg: 'bg-red-500/10 hover:bg-red-500/20',
-    border: 'border-red-500/20 hover:border-red-400/40',
+    color: 'text-orange-500',
+    bg: 'bg-orange-50 hover:bg-orange-100',
+    border: 'border-orange-200 hover:border-orange-300',
   },
 ]
 
@@ -83,10 +83,9 @@ export function KategoriGrid() {
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <h2 className="text-2xl font-bold text-foreground mb-6">
-        Kategori <span className="text-primary">Pilihan</span>
+        Kategori <span className="text-primary">Skincare</span>
       </h2>
 
-      {/* Horizontal scroll on mobile, 7-column grid on desktop */}
       <div className="flex gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-7 md:overflow-visible">
         {categories.map((cat) => {
           const Icon = cat.icon
