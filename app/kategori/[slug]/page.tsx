@@ -4,40 +4,33 @@ import { getProductsByCategory } from '@/lib/db/products'
 import type { CategorySlug } from '@/types'
 
 const categoryInfo: Record<string, { label: string; description: string }> = {
-  gadget: {
-    label: 'Gadget',
-    description:
-      'Temukan smartphone, laptop, audio, dan aksesori elektronik terbaik pilihan kurator kami.',
+  serum: {
+    label: 'Serum',
+    description: 'Serum skincare terbaik untuk kulit cerah, lembab, dan bebas jerawat. Pilihan terpercaya untuk niacinamide, retinol, dan vitamin C.',
   },
-  fashion: {
-    label: 'Fashion',
-    description:
-      'Koleksi pakaian, sepatu, dan aksesori fashion terkini dengan kualitas terbaik.',
+  moisturizer: {
+    label: 'Moisturizer',
+    description: 'Pelembab wajah terbaik untuk menjaga hidrasi kulit dan memperkuat skin barrier sepanjang hari.',
   },
-  kesehatan: {
-    label: 'Kesehatan',
-    description:
-      'Produk kesehatan, suplemen, dan peralatan terpercaya untuk hidup lebih sehat.',
+  sunscreen: {
+    label: 'Sunscreen',
+    description: 'Sunscreen terbaik untuk iklim tropis Indonesia — ringan, tidak lengket, dan melindungi kulit dari sinar UV setiap hari.',
   },
-  travel: {
-    label: 'Travel',
-    description:
-      'Koper, backpack, kamera, dan aksesori perjalanan untuk petualangan tanpa hambatan.',
+  cleanser: {
+    label: 'Pembersih',
+    description: 'Sabun cuci muka dan pembersih wajah terbaik untuk kulit bersih optimal tanpa merusak skin barrier.',
   },
-  rumah: {
-    label: 'Rumah',
-    description:
-      'Furnitur, dekorasi, dan elektronik rumah untuk menciptakan hunian impian.',
+  toner: {
+    label: 'Toner',
+    description: 'Toner skincare untuk menyeimbangkan pH kulit, mengecilkan pori, dan mempersiapkan kulit menyerap serum.',
   },
-  kecantikan: {
-    label: 'Kecantikan',
-    description:
-      'Skincare, makeup, dan perawatan rambut dari brand lokal dan internasional terbaik.',
+  eyecare: {
+    label: 'Perawatan Mata',
+    description: 'Krim mata dan produk perawatan area mata terbaik untuk mengatasi kantung mata, kerutan, dan lingkaran hitam.',
   },
-  olahraga: {
-    label: 'Olahraga',
-    description:
-      'Sepatu, pakaian, dan peralatan olahraga untuk mendukung gaya hidup aktif.',
+  bodycare: {
+    label: 'Body Care',
+    description: 'Produk perawatan tubuh terbaik untuk kulit cerah, lembab, dan wangi sepanjang hari.',
   },
 }
 

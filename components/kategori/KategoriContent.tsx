@@ -11,13 +11,13 @@ const PRODUCTS_PER_PAGE = 6
 
 // Sub-kategori options per category
 const subKategoriMap: Record<string, string[]> = {
-  gadget: ['Smartphone', 'Laptop', 'Tablet', 'Audio', 'Aksesori'],
-  fashion: ['Atasan', 'Bawahan', 'Sepatu', 'Tas', 'Aksesori'],
-  kesehatan: ['Suplemen', 'Peralatan', 'Skincare', 'Herbal'],
-  travel: ['Koper', 'Backpack', 'Kamera', 'Aksesori'],
-  rumah: ['Furnitur', 'Dekorasi', 'Dapur', 'Elektronik'],
-  kecantikan: ['Skincare', 'Makeup', 'Rambut', 'Parfum'],
-  olahraga: ['Sepatu', 'Pakaian', 'Gym', 'Outdoor'],
+  serum: ['Niacinamide', 'Vitamin C', 'Retinol', 'Hyaluronic Acid', 'AHA/BHA'],
+  moisturizer: ['Gel Cream', 'Lotion', 'Heavy Cream', 'Sleeping Mask'],
+  sunscreen: ['Chemical', 'Mineral', 'Hybrid', 'Tinted'],
+  cleanser: ['Foam', 'Gel', 'Micellar Water', 'Oil Cleanser'],
+  toner: ['Hydrating', 'Exfoliating', 'Brightening', 'Pore Care'],
+  eyecare: ['Eye Cream', 'Eye Serum', 'Eye Mask'],
+  bodycare: ['Body Lotion', 'Body Scrub', 'Body Wash', 'Body Oil'],
 }
 
 interface KategoriContentProps {
