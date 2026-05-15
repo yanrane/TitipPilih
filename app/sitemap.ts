@@ -17,10 +17,9 @@ const reviewSlugList = [
   'skintific-barrier-cream',
   'somethinc-niacinamide-serum',
   'cetaphil-gentle-cleanser',
-  'hada-labo-hydrating-cleanser',
   'scarlett-brightening-serum',
-  'avoskin-miraculous-retinol',
-  'skintific-mugwort-toner',
+  'skincare-routine-kulit-kering',
+  'rekomendasi-sunscreen-lokal-2026',
   'scarlett-shower-scrub',
 ]
 

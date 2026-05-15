@@ -3,6 +3,8 @@ import { KategoriContent } from '@/components/kategori/KategoriContent'
 import { getProductsByCategory } from '@/lib/db/products'
 import type { CategorySlug } from '@/types'
 
+export const dynamic = 'force-dynamic'
+
 const categoryInfo: Record<string, { label: string; description: string }> = {
   serum: {
     label: 'Serum',
@@ -34,6 +36,10 @@ const categoryInfo: Record<string, { label: string; description: string }> = {
   },
 }
 
+export async function generateStaticParams() {
+  return Object.keys(categoryInfo).map((slug) => ({ slug }))
+}
+
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -53,11 +59,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `produk ${label.toLowerCase()} pilihan kurator`,
       'TitipPilih',
     ],
+    alternates: {
+      canonical: `https://titippilih.id/kategori/${slug}`,
+    },
     openGraph: {
       title: `Kategori ${label} | TitipPilih`,
       description,
       url: `https://titippilih.id/kategori/${slug}`,
       type: 'website',
+      images: [{ url: 'https://titippilih.id/opengraph-image.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Kategori ${label} | TitipPilih`,
+      description,
+      images: ['https://titippilih.id/opengraph-image.png'],
     },
   }
 }

@@ -115,3 +115,15 @@ model Recipient {
   tanggal        DateTime
   createdAt      DateTime     @default(now())
 }
+model AffiliateClick {
+  id          String   @id @default(cuid())
+  productId   String
+  productSlug String
+  source      String?
+  campaign    String?
+  contentId   String?
+  referrer    String?
+  userAgent   String?
+  ipHash      String?
+  createdAt   DateTime @default(now())
+}

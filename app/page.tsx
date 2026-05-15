@@ -19,12 +19,22 @@ export const metadata: Metadata = {
     'belanja affiliate Indonesia',
     'donasi sosial belanja',
   ],
+  alternates: {
+    canonical: 'https://titippilih.id',
+  },
   openGraph: {
     title: 'TitipPilih — Rekomendasi Jujur, Berbagi Tulus',
     description:
       'Temukan rekomendasi produk terpercaya dari kurator Indonesia. Belanja dengan niat baik — sebagian komisi kami disumbangkan untuk sesama.',
     url: 'https://titippilih.id',
     type: 'website',
+    images: [{ url: 'https://titippilih.id/opengraph-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TitipPilih — Rekomendasi Jujur, Berbagi Tulus',
+    description: 'Temukan rekomendasi produk terpercaya dari kurator Indonesia. Belanja dengan niat baik — sebagian komisi kami disumbangkan untuk sesama.',
+    images: ['https://titippilih.id/opengraph-image.png'],
   },
 }
 

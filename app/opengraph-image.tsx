@@ -110,21 +110,38 @@ export default function Image() {
           disumbangkan setiap minggu.
         </div>
 
-        {/* Teal social badge */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            background: 'rgba(20, 184, 166, 0.15)',
-            border: '1px solid rgba(20, 184, 166, 0.4)',
-            borderRadius: '999px',
-            padding: '10px 24px',
-          }}
-        >
-          <span style={{ color: '#14B8A6', fontSize: '18px', fontWeight: 600 }}>
-            💚 Sudah Rp 12.450.000 disalurkan kepada 83 penerima manfaat
-          </span>
+        {/* Feature badges */}
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'rgba(249, 115, 22, 0.15)',
+              border: '1px solid rgba(249, 115, 22, 0.4)',
+              borderRadius: '999px',
+              padding: '8px 20px',
+            }}
+          >
+            <span style={{ color: '#F97316', fontSize: '16px', fontWeight: 600 }}>
+              ✓ Review Jujur dari Kurator Indonesia
+            </span>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'rgba(20, 184, 166, 0.15)',
+              border: '1px solid rgba(20, 184, 166, 0.4)',
+              borderRadius: '999px',
+              padding: '8px 20px',
+            }}
+          >
+            <span style={{ color: '#14B8A6', fontSize: '16px', fontWeight: 600 }}>
+              💚 Sebagian Komisi untuk Donasi Sosial
+            </span>
+          </div>
         </div>
       </div>
     ),

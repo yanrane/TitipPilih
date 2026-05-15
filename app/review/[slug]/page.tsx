@@ -8,16 +8,33 @@ import { ProductSidebar } from '@/components/review/ProductSidebar'
 import { RelatedReviews } from '@/components/review/RelatedReviews'
 import { getReviewBySlug } from '@/lib/db/reviews'
 
+export const dynamic = 'force-dynamic'
+
 const BASE_URL = 'https://titippilih.id'
 
 const categoryLabels: Record<string, string> = {
-  gadget: 'Gadget',
-  fashion: 'Fashion',
-  kesehatan: 'Kesehatan',
-  travel: 'Travel',
-  rumah: 'Rumah',
-  kecantikan: 'Kecantikan',
-  olahraga: 'Olahraga',
+  serum: 'Serum',
+  moisturizer: 'Moisturizer',
+  sunscreen: 'Sunscreen',
+  cleanser: 'Pembersih',
+  toner: 'Toner',
+  eyecare: 'Perawatan Mata',
+  bodycare: 'Body Care',
+}
+
+const REVIEW_SLUGS = [
+  'azarine-hydrasoothe-spf45',
+  'skintific-barrier-cream',
+  'somethinc-niacinamide-serum',
+  'cetaphil-gentle-cleanser',
+  'scarlett-brightening-serum',
+  'skincare-routine-kulit-kering',
+  'rekomendasi-sunscreen-lokal-2026',
+  'scarlett-shower-scrub',
+]
+
+export async function generateStaticParams() {
+  return REVIEW_SLUGS.map((slug) => ({ slug }))
 }
 
 function RelatedReviewsSkeleton() {
@@ -61,11 +78,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `${review.category} terbaik Indonesia`,
       'review jujur TitipPilih',
     ],
+    alternates: {
+      canonical: `https://titippilih.id/review/${slug}`,
+    },
     openGraph: {
       title: `${pageTitle} | TitipPilih`,
       description,
       url: `https://titippilih.id/review/${slug}`,
       type: 'article',
+      images: [{ url: 'https://titippilih.id/opengraph-image.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${pageTitle} | TitipPilih`,
+      description,
+      images: ['https://titippilih.id/opengraph-image.png'],
     },
   }
 }

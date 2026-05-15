@@ -18,12 +18,16 @@ export const metadata: Metadata = {
     'TitipPilih donasi',
     'bantuan sosial Indonesia',
   ],
+  alternates: {
+    canonical: 'https://titippilih.id/donasi',
+  },
   openGraph: {
     title: 'Transparansi Donasi | TitipPilih',
     description:
       'Laporan transparan penggunaan komisi affiliate TitipPilih untuk membantu warga yang membutuhkan setiap minggu.',
     url: 'https://titippilih.id/donasi',
     type: 'website',
+    images: [{ url: 'https://titippilih.id/opengraph-image.png', width: 1200, height: 630 }],
   },
 }
 

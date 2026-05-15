@@ -19,12 +19,16 @@ export const metadata: Metadata = {
     'review independen Indonesia',
     'transparansi donasi',
   ],
+  alternates: {
+    canonical: 'https://titippilih.id/tentang',
+  },
   openGraph: {
     title: 'Tentang Kami | TitipPilih',
     description:
       'Kenali lebih dekat TitipPilih — misi kami, cara kerja kurator, dan komitmen transparansi donasi.',
     url: 'https://titippilih.id/tentang',
     type: 'website',
+    images: [{ url: 'https://titippilih.id/opengraph-image.png', width: 1200, height: 630 }],
   },
 }
 

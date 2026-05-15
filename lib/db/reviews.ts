@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import { getStaticProduct } from '@/lib/db/products'
 import type { CategorySlug, ArticlePreview } from '@/types'
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -214,18 +215,23 @@ const REVIEWS_FALLBACK: ReviewData[] = [
 ]
 
 function generateFallback(slug: string): ReviewData {
-  const title = slug
+  const rawTitle = slug
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
+  const product = getStaticProduct(slug)
+  const title = product?.title ?? rawTitle
+  const affiliateUrl =
+    product?.affiliateUrl ?? `https://shopee.co.id/search?keyword=${encodeURIComponent(title)}`
   return {
     slug,
     title,
-    category: 'serum',
-    rating: 8.5,
-    priceMin: 89_000,
-    priceMax: 159_000,
-    affiliateUrl: '#',
+    category: (product?.category ?? 'serum') as CategorySlug,
+    image: product?.image,
+    rating: product?.rating ?? 8.5,
+    priceMin: product?.priceMin ?? 89_000,
+    priceMax: product?.priceMax ?? 159_000,
+    affiliateUrl,
     kurator: 'Tim Kurator TitipPilih',
     tanggal: '12 April 2026',
     estimasiBaca: 8,

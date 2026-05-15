@@ -34,7 +34,13 @@ export const metadata: Metadata = {
     'skincare lokal Indonesia',
     'TitipPilih skincare',
     'donasi sosial skincare',
+    'serum terbaik 2026',
+    'skincare murah berkualitas',
+    'review jujur produk kecantikan',
   ],
+  alternates: {
+    canonical: 'https://titippilih.id',
+  },
   openGraph: {
     siteName: 'TitipPilih',
     locale: 'id_ID',
@@ -43,13 +49,52 @@ export const metadata: Metadata = {
     description:
       'Review skincare terpercaya dari kurator Indonesia. Serum, moisturizer, sunscreen terlaris — rekomendasi jujur, sebagian komisi untuk donasi.',
     url: 'https://titippilih.id',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'TitipPilih — Rekomendasi Jujur, Berbagi Tulus' }],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@titippilih',
     title: 'TitipPilih — Review Skincare Jujur, Berbagi Tulus',
     description:
       'Review skincare terpercaya dari kurator Indonesia. Rekomendasi jujur, sebagian komisi untuk donasi.',
+    images: ['/opengraph-image.png'],
   },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://titippilih.id/#organization',
+      name: 'TitipPilih',
+      url: 'https://titippilih.id',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://titippilih.id/icon.svg',
+        width: 512,
+        height: 512,
+      },
+      description: 'Website review skincare Indonesia — rekomendasi jujur, sebagian komisi untuk donasi warga kurang mampu.',
+      sameAs: ['https://titippilih.id'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://titippilih.id/#website',
+      url: 'https://titippilih.id',
+      name: 'TitipPilih',
+      publisher: { '@id': 'https://titippilih.id/#organization' },
+      inLanguage: 'id-ID',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://titippilih.id/kategori/{search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -60,6 +105,10 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <SocialImpactStrip />
