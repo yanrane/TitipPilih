@@ -4,6 +4,7 @@ import { formatRupiah } from '@/lib/utils'
 import type { ProductSidebarProps } from '@/types'
 
 export function ProductSidebar({
+  slug: productSlug,
   image,
   title,
   rating,
@@ -69,13 +70,13 @@ export function ProductSidebar({
           )}
         </div>
 
-        {/* CTA — affiliate link */}
+        {/* CTA — tracked affiliate link */}
         <a
-          href={affiliateUrl}
+                    href={`/go/${productSlug}?src=web&utm_campaign=site-product-detail`}
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-primary text-primary-foreground font-bold rounded-xl hover:bg-primary/90 transition-colors text-sm"
-          aria-label={`Beli ${title} sekarang`}
+          aria-label={`Beli produk ini sekarang`}
         >
           <ShoppingCart size={16} />
           Beli Sekarang

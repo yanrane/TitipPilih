@@ -27,6 +27,7 @@ export interface RecipientCardProps {
 }
 
 export interface ProductSidebarProps {
+  slug: string
   title: string
   image: string
   rating: number

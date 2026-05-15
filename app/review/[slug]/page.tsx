@@ -162,6 +162,7 @@ export default async function ReviewPage({ params }: Props) {
           <div className="hidden lg:block">
             <div className="sticky top-24">
               <ProductSidebar
+                slug={slug}
                 title={review.title}
                 image={review.image ?? ''}
                 rating={review.rating}
@@ -176,6 +177,7 @@ export default async function ReviewPage({ params }: Props) {
         {/* Mobile — product sidebar at bottom (non-sticky) */}
         <div className="lg:hidden mt-8">
           <ProductSidebar
+            slug={slug}
             title={review.title}
             image={review.image ?? ''}
             rating={review.rating}

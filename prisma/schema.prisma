@@ -43,6 +43,7 @@ model Product {
   affiliateUrl String
   trending     Boolean   @default(false)
   review       Review?
+  affiliateClicks AffiliateClick[]
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 }
@@ -68,6 +69,27 @@ model Review {
   published    Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+}
+
+model AffiliateClick {
+  id          String   @id @default(cuid())
+  productId   String
+  productSlug String
+  source      String?  @db.VarChar(64)
+  campaign    String?  @db.VarChar(128)
+  contentId   String?  @db.VarChar(128)
+  referrer    String?  @db.Text
+  userAgent   String?  @db.Text
+  ipHash      String?  @db.VarChar(128)
+  createdAt   DateTime @default(now())
+
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, createdAt])
+  @@index([productSlug, createdAt])
+  @@index([source, createdAt])
+  @@index([campaign, createdAt])
+  @@index([createdAt])
 }
 
 model DonationWeek {
