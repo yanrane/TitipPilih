@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { getSpecificAffiliateLink } from '@/lib/specificAffiliateLinks'
 import { cleanParam, getClientIp, hashIp } from '@/lib/tracking'
 
 type Params = Promise<{ slug: string }>
@@ -41,6 +42,10 @@ export async function GET(request: NextRequest, segmentData: { params: Params })
       console.error('[affiliate-tracking] Failed to log click:', error.message)
     })
 
+  // Prefer specific product affiliate links. Older DB rows may contain search-result
+  // affiliate URLs, which can confuse buyers and break commission attribution.
+  const destinationUrl = getSpecificAffiliateLink(product.slug) ?? product.affiliateUrl
+
   // Redirect user to Shopee affiliate URL
-  return NextResponse.redirect(product.affiliateUrl, 302)
+  return NextResponse.redirect(destinationUrl, 302)
 }
