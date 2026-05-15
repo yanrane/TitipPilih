@@ -8,7 +8,7 @@ import type { ArticlePreview } from '@/types'
 const categoryImages: Record<string, string> = {
   serum: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&h=450&fit=crop&auto=format',
   moisturizer: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&h=450&fit=crop&auto=format',
-  sunscreen: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&h=450&fit=crop&auto=format',
+  sunscreen: '/product-images/real-sunscreen-azarine-hydrasoothe-sunscreen-gel-spf45-pa-50ml.jpg',
   cleanser: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&h=450&fit=crop&auto=format',
   toner: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=450&fit=crop&auto=format',
   eyecare: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=450&fit=crop&auto=format',

@@ -71,7 +71,7 @@ export function HeroSection() {
               >
                 <div className="relative w-full aspect-video bg-gradient-to-br from-rose-50 to-orange-50">
                   <Image
-                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700&h=394&fit=crop&auto=format"
+                    src="/product-images/real-sunscreen-azarine-hydrasoothe-sunscreen-gel-spf45-pa-50ml.jpg"
                     alt="Azarine Hydrasoothe Sunscreen SPF45"
                     fill
                     sizes="(max-width: 768px) 0px, 384px"

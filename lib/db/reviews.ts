@@ -27,7 +27,7 @@ const REVIEWS_FALLBACK: ReviewData[] = [
     slug: 'azarine-hydrasoothe-spf45',
     title: 'Azarine Hydrasoothe Sunscreen Gel SPF45 PA++++',
     category: 'sunscreen',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop&auto=format',
+    image: '/product-images/real-sunscreen-azarine-hydrasoothe-sunscreen-gel-spf45-pa-50ml.jpg',
     rating: 9.4,
     priceMin: 49_000,
     priceMax: 69_000,
