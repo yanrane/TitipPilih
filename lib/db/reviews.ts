@@ -247,6 +247,40 @@ function generateFallback(slug: string): ReviewData {
   }
 }
 
+function generateFallbackFromProduct(product: {
+  slug: string
+  title: string
+  categorySlug: string
+  image: string
+  rating: number
+  priceMin: number
+  priceMax: number | null
+  affiliateUrl: string
+}): ReviewData {
+  return {
+    slug: product.slug,
+    title: product.title,
+    category: product.categorySlug as CategorySlug,
+    image: product.image,
+    rating: product.rating,
+    priceMin: product.priceMin,
+    priceMax: product.priceMax ?? undefined,
+    affiliateUrl: product.affiliateUrl,
+    kurator: 'Tim Kurator TitipPilih',
+    tanggal: '12 April 2026',
+    estimasiBaca: 8,
+    pros: [
+      'Kualitas produk yang solid untuk harga yang ditawarkan',
+      'Foto dan data produk mengikuti katalog terbaru TitipPilih',
+      'Harga dan tautan pembelian diarahkan ke marketplace terkait',
+    ],
+    cons: [
+      'Detail pengalaman pemakaian dapat berbeda tergantung kondisi kulit masing-masing orang',
+      'Harga dan stok dapat berubah sewaktu-waktu mengikuti marketplace',
+    ],
+  }
+}
+
 function mapReview(r: {
   slug: string
   title: string
@@ -291,7 +325,19 @@ export async function getReviewBySlug(slug: string): Promise<ReviewData> {
       where: { slug, published: true },
       include: { kurator: true, product: { select: { image: true } } },
     })
-    return review ? mapReview(review) : (REVIEWS_FALLBACK.find((r) => r.slug === slug) ?? generateFallback(slug))
+
+    if (review) {
+      const mapped = mapReview(review)
+      if (mapped.image) return mapped
+
+      const product = await prisma.product.findUnique({ where: { slug } })
+      return product ? { ...mapped, image: product.image } : mapped
+    }
+
+    const product = await prisma.product.findUnique({ where: { slug } })
+    if (product) return generateFallbackFromProduct(product)
+
+    return REVIEWS_FALLBACK.find((r) => r.slug === slug) ?? generateFallback(slug)
   } catch {
     return REVIEWS_FALLBACK.find((r) => r.slug === slug) ?? generateFallback(slug)
   }
