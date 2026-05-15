@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { isBearerTokenAuthorized } from '@/lib/productApiAuth'
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -15,10 +16,10 @@ function slugify(text: string): string {
 }
 
 function isAuthorized(req: NextRequest): boolean {
-  const token = process.env.TITIPILIH_API_TOKEN
-  if (!token) return false
-  const header = req.headers.get('authorization') ?? ''
-  return header === `Bearer ${token}`
+  return isBearerTokenAuthorized(
+    req.headers.get('authorization'),
+    req.headers.get('x-admin-token'),
+  )
 }
 
 // ─── POST /api/products ──────────────────────────────────────────────────────
