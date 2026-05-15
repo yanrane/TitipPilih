@@ -43,6 +43,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://titippilih.id',
   },
+  verification: {
+    google: 'wBmTfRUwEZ8nlvscIFXyLV9DlrDMCkTGoRcUj4jeb5I',
+  },
   openGraph: {
     siteName: 'TitipPilih',
     locale: 'id_ID',
