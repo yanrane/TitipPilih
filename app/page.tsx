@@ -9,15 +9,18 @@ import { getLatestReviews } from '@/lib/db/reviews'
 import { getDonationStats } from '@/lib/db/donations'
 
 export const metadata: Metadata = {
-  title: 'Beranda',
+  title: 'Review Skincare Jujur Indonesia',
   description:
-    'Temukan rekomendasi produk terpercaya dari kurator Indonesia. Belanja dengan niat baik — sebagian komisi kami disumbangkan untuk sesama.',
+    'Temukan review skincare jujur Indonesia: serum, moisturizer, sunscreen, cleanser, toner, dan eye care pilihan kurator. Sebagian komisi untuk donasi sosial.',
   keywords: [
-    'rekomendasi produk terbaik',
-    'review jujur Indonesia',
-    'produk kurator',
-    'belanja affiliate Indonesia',
-    'donasi sosial belanja',
+    'review skincare Indonesia',
+    'rekomendasi skincare terbaik',
+    'skincare lokal Indonesia',
+    'serum terbaik Indonesia',
+    'sunscreen terbaik Indonesia',
+    'moisturizer terbaik Indonesia',
+    'review jujur produk kecantikan',
+    'donasi sosial skincare',
   ],
   alternates: {
     canonical: 'https://titippilih.id',
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'TitipPilih — Rekomendasi Jujur, Berbagi Tulus',
     description:
-      'Temukan rekomendasi produk terpercaya dari kurator Indonesia. Belanja dengan niat baik — sebagian komisi kami disumbangkan untuk sesama.',
+      'Temukan review skincare jujur Indonesia: serum, moisturizer, sunscreen, cleanser, toner, dan eye care pilihan kurator. Sebagian komisi untuk donasi sosial.',
     url: 'https://titippilih.id',
     type: 'website',
     images: [{ url: 'https://titippilih.id/opengraph-image.png', width: 1200, height: 630 }],
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'TitipPilih — Rekomendasi Jujur, Berbagi Tulus',
-    description: 'Temukan rekomendasi produk terpercaya dari kurator Indonesia. Belanja dengan niat baik — sebagian komisi kami disumbangkan untuk sesama.',
+    description: 'Temukan review skincare jujur Indonesia: serum, moisturizer, sunscreen, cleanser, toner, dan eye care pilihan kurator. Sebagian komisi untuk donasi sosial.',
     images: ['https://titippilih.id/opengraph-image.png'],
   },
 }

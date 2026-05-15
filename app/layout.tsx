@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
+import { Analytics } from '@vercel/analytics/next'
 import { Footer } from '@/components/layout/Footer'
 import { SocialImpactStrip } from '@/components/shared/SocialImpactStrip'
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: '--font-sans',
@@ -113,6 +115,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SocialImpactStrip />
         <Footer />
+        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   )
