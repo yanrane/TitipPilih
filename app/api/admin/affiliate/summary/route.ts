@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { buildAffiliateSubId, cleanParam } from '@/lib/tracking'
 
 function unauthorized() {
   return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 })
 }
 
 export async function GET(request: NextRequest) {
+  const url = new URL(request.url)
   const token = request.headers.get('authorization')?.replace('Bearer ', '').trim()
   const adminToken = process.env.TITIPPILIH_ADMIN_TOKEN
-  const queryToken = new URL(request.url).searchParams.get('token')
+  const queryToken = url.searchParams.get('token')
 
   if (!adminToken) {
     return NextResponse.json({ ok: false, error: 'Admin token not configured on server' }, { status: 500 })
@@ -26,7 +28,18 @@ export async function GET(request: NextRequest) {
   start7Days.setDate(now.getDate() - 7)
 
   try {
-    const [today, sevenDays, topProducts, topSources, latest, totalAllTime] = await Promise.all([
+    const requestedSubIds = parseRequestedSubIds(url.searchParams)
+
+    const [
+      today,
+      sevenDays,
+      topProducts,
+      topSources,
+      topContentIds,
+      rawLatest,
+      rawReconciliationClicks,
+      totalAllTime,
+    ] = await Promise.all([
       prisma.affiliateClick.count({ where: { createdAt: { gte: startToday } } }),
       prisma.affiliateClick.count({ where: { createdAt: { gte: start7Days } } }),
       prisma.affiliateClick.groupBy({
@@ -43,13 +56,47 @@ export async function GET(request: NextRequest) {
         orderBy: { _count: { id: 'desc' } },
         take: 10,
       }),
+      prisma.affiliateClick.groupBy({
+        by: ['contentId'],
+        where: { createdAt: { gte: start7Days }, contentId: { not: null } },
+        _count: { id: true },
+        orderBy: { _count: { id: 'desc' } },
+        take: 20,
+      }),
       prisma.affiliateClick.findMany({
         orderBy: { createdAt: 'desc' },
-        take: 20,
+        take: 100,
+        select: { productSlug: true, source: true, campaign: true, contentId: true, createdAt: true },
+      }),
+      prisma.affiliateClick.findMany({
+        where: { createdAt: { gte: start7Days } },
+        orderBy: { createdAt: 'desc' },
+        take: 5000,
         select: { productSlug: true, source: true, campaign: true, contentId: true, createdAt: true },
       }),
       prisma.affiliateClick.count(),
     ])
+
+    const latest = rawLatest.map((click) => ({
+      ...click,
+      subId: buildAffiliateSubId({
+        source: click.source,
+        campaign: click.campaign,
+        contentId: click.contentId,
+        productSlug: click.productSlug,
+      }),
+    }))
+
+    const reconciliationSubIdClicks = new Map<string, number>()
+    for (const click of rawReconciliationClicks) {
+      const subId = buildAffiliateSubId({
+        source: click.source,
+        campaign: click.campaign,
+        contentId: click.contentId,
+        productSlug: click.productSlug,
+      })
+      reconciliationSubIdClicks.set(subId, (reconciliationSubIdClicks.get(subId) ?? 0) + 1)
+    }
 
     return NextResponse.json({
       ok: true,
@@ -64,10 +111,37 @@ export async function GET(request: NextRequest) {
         source: s.source || '(direct)',
         clicks: s._count.id,
       })),
+      topContentIds: topContentIds.map((content) => ({
+        contentId: content.contentId,
+        clicks: content._count.id,
+      })),
       latest,
+      reconciliation: {
+        note: 'Cocokkan kolom sub_id dari laporan marketplace affiliate dengan field subId di response ini. sub_id dibentuk dari src + campaign + cid + productSlug.',
+        requestedSubIds,
+        matches: requestedSubIds.map((subId) => ({
+          subId,
+          clicksIn7Days: reconciliationSubIdClicks.get(subId) ?? 0,
+          matched: reconciliationSubIdClicks.has(subId),
+        })),
+      },
     })
   } catch (error) {
     console.error('[affiliate-admin] Fetch error:', error)
     return NextResponse.json({ ok: false, error: 'Internal server error' }, { status: 500 })
   }
+}
+
+function parseRequestedSubIds(searchParams: URLSearchParams): string[] {
+  const rawValues = [
+    searchParams.get('sub_ids'),
+    searchParams.get('subIds'),
+    searchParams.get('report_sub_ids'),
+  ].filter(Boolean) as string[]
+
+  return rawValues
+    .flatMap((value) => value.split(','))
+    .map((value) => cleanParam(value.trim(), 128))
+    .filter((value): value is string => Boolean(value))
+    .slice(0, 100)
 }

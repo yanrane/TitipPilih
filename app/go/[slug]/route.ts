@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getSpecificAffiliateLink } from '@/lib/specificAffiliateLinks'
-import { cleanParam, getClientIp, hashIp } from '@/lib/tracking'
+import { appendAffiliateTrackingParams, cleanParam, getClientIp, hashIp } from '@/lib/tracking'
 
 type Params = Promise<{ slug: string }>
 
@@ -44,8 +44,13 @@ export async function GET(request: NextRequest, segmentData: { params: Params })
 
   // Prefer specific product affiliate links. Older DB rows may contain search-result
   // affiliate URLs, which can confuse buyers and break commission attribution.
-  const destinationUrl = getSpecificAffiliateLink(product.slug) ?? product.affiliateUrl
+  const destinationUrl = appendAffiliateTrackingParams(getSpecificAffiliateLink(product.slug) ?? product.affiliateUrl, {
+    source,
+    campaign,
+    contentId,
+    productSlug: product.slug,
+  })
 
-  // Redirect user to Shopee affiliate URL
+  // Redirect user to Shopee affiliate URL with marketplace-side sub_id tracking
   return NextResponse.redirect(destinationUrl, 302)
 }
