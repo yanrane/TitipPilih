@@ -53,9 +53,7 @@ export function appendAffiliateTrackingParams(
 
     if (tracking.source) destination.searchParams.set('utm_source', tracking.source)
     if (tracking.campaign) destination.searchParams.set('utm_campaign', tracking.campaign)
-    if (tracking.contentId && !destination.searchParams.has('utm_content')) {
-      destination.searchParams.set('utm_content', tracking.contentId)
-    }
+    if (tracking.contentId) destination.searchParams.set('utm_content', tracking.contentId)
 
     return destination.toString()
   } catch {
