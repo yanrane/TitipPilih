@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Heart, Star, ShieldCheck } from 'lucide-react'
+import { ExternalLink, Star, ShieldCheck } from 'lucide-react'
 
 export function HeroSection() {
   return (
@@ -16,7 +16,7 @@ export function HeroSection() {
             {/* Trust badge */}
             <div className="inline-flex items-center gap-2 bg-white/80 border border-rose-100 rounded-full px-4 py-1.5 w-fit shadow-sm">
               <ShieldCheck size={14} className="text-primary" />
-              <span className="text-xs font-semibold text-foreground">Review Jujur ✓ Dermatologis Approved</span>
+              <span className="text-xs font-semibold text-foreground">Pilih berdasarkan kebutuhan kulit & anggaran</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
@@ -29,9 +29,8 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              Kurator kami test langsung di kulit Indonesia — rekomendasi
-              jujur tanpa bias brand. Sebagian komisi untuk donasi sosial
-              yang transparan.
+              Jelajahi produk berdasarkan kategori, rentang harga, dan skor yang ditampilkan.
+              Link pembelian dapat memberi TitipPilih komisi afiliasi tanpa menambah harga kamu.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -42,20 +41,11 @@ export function HeroSection() {
                 Lihat Review Skincare
               </Link>
               <Link
-                href="/donasi"
+                href="/disclosure"
                 className="px-6 py-3 border border-secondary text-secondary font-semibold rounded-lg hover:bg-secondary/10 transition-colors"
               >
-                Cara Kerja Donasi
+                Cara Kerja Afiliasi
               </Link>
-            </div>
-
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Heart size={15} className="text-primary fill-primary shrink-0" />
-              <span>
-                Sudah{' '}
-                <strong className="text-foreground">83 orang</strong>{' '}
-                terbantu dari komisi affiliate bulan ini
-              </span>
             </div>
           </div>
 
@@ -65,10 +55,12 @@ export function HeroSection() {
               {/* Outer glow */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-orange-200/20 blur-2xl" />
 
-              <Link
-                href="/review/azarine-hydrasoothe-spf45"
-                className="relative block rounded-3xl border border-rose-100 bg-white overflow-hidden hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-xl group"
-              >
+              <div className="relative rounded-3xl border border-rose-100 bg-white overflow-hidden shadow-lg">
+                <Link
+                  href="/review/azarine-hydrasoothe-spf45"
+                  className="block group"
+                  aria-label="Baca review Azarine Hydrasoothe SPF45"
+                >
                 <div className="relative w-full aspect-video bg-gradient-to-br from-rose-50 to-orange-50">
                   <Image
                     src="/product-images/real-sunscreen-azarine-hydrasoothe-sunscreen-gel-spf45-pa-50ml.jpg"
@@ -109,15 +101,24 @@ export function HeroSection() {
                     Mulai{' '}
                     <span className="text-primary">Rp 49.000</span>
                   </p>
-
-                  <div className="flex items-center gap-2 pt-1 border-t border-rose-50">
-                    <Heart size={12} className="text-secondary fill-secondary shrink-0" />
-                    <p className="text-xs text-muted-foreground">
-                      Sebagian komisi untuk donasi sosial
-                    </p>
-                  </div>
                 </div>
-              </Link>
+                </Link>
+
+                <div className="border-t border-rose-50 p-5 pt-4">
+                  <a
+                    href="/go/azarine-hydrasoothe-spf45?src=web&utm_campaign=site-hero&cid=hero-azarine"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    <ExternalLink size={16} />
+                    Cek harga di Shopee
+                  </a>
+                  <p className="mt-2 text-center text-xs text-muted-foreground">
+                    Link afiliasi — TitipPilih dapat menerima komisi tanpa menambah harga kamu.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

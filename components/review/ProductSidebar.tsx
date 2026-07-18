@@ -82,17 +82,16 @@ export function ProductSidebar({
           Beli Sekarang
         </a>
 
-        {/* Donation note */}
+        {/* Affiliate disclosure */}
         <div className="flex items-start gap-2 p-3 bg-secondary/10 rounded-lg border border-secondary/20">
           <Heart size={14} className="text-secondary fill-secondary shrink-0 mt-0.5" />
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Komisi dari pembelian ini sebagian disumbangkan untuk warga yang
-            membutuhkan.{' '}
+            Link ini adalah link afiliasi; TitipPilih dapat menerima komisi tanpa menambah harga kamu.{' '}
             <a
-              href="/donasi"
+              href="/disclosure"
               className="text-secondary hover:underline underline-offset-2"
             >
-              Lihat laporan
+              Selengkapnya
             </a>
           </p>
         </div>

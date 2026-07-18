@@ -6,11 +6,10 @@ export function DonationNoticeBanner() {
       <p className="mx-auto max-w-7xl text-sm text-secondary text-center flex items-center justify-center gap-1.5 flex-wrap">
         <span aria-hidden="true">💚</span>
         <span>
-          Sebagian komisi dari artikel ini disumbangkan untuk warga yang
-          membutuhkan.
+          Link pada artikel ini dapat memberi TitipPilih komisi afiliasi tanpa menambah harga kamu.
         </span>
         <Link
-          href="/donasi"
+          href="/disclosure"
           className="underline underline-offset-2 hover:no-underline font-medium"
         >
           Pelajari lebih lanjut

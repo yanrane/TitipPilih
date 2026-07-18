@@ -70,8 +70,7 @@ export function SocialImpactBanner({ stats }: { stats: DonationStats }) {
             <span className="text-secondary italic">Memberi Untuk Sesama</span>
           </h2>
           <p className="text-muted-foreground text-sm max-w-md mx-auto leading-relaxed">
-            Setiap klik affiliate link di TitipPilih berkontribusi langsung
-            pada kehidupan nyata — dilaporkan terbuka setiap minggu.
+            Program donasi akan dilaporkan terbuka setelah komisi afiliasi benar-benar diterima dan disalurkan.
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { isBearerTokenAuthorized } from '@/lib/productApiAuth'
+import { toPublicProduct } from '@/lib/publicProduct'
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -225,7 +226,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       include: { category: { select: { slug: true, label: true } } },
     })
 
-    return NextResponse.json({ ok: true, products })
+    return NextResponse.json({ ok: true, products: products.map(toPublicProduct) })
   } catch (err) {
     console.error('[GET /api/products]', err)
     return NextResponse.json({ ok: false, message: 'Internal server error' }, { status: 500 })
