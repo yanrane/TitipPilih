@@ -119,9 +119,9 @@ export function SocialImpactBanner({ stats }: { stats: DonationStats }) {
           /* Mission statement — shown before any donation data exists */
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 max-w-2xl mx-auto">
             {[
-              { icon: '🤝', label: '15% komisi', desc: 'disisihkan untuk donasi setiap minggu' },
-              { icon: '📋', label: 'Transparan', desc: 'setiap rupiah dilaporkan secara terbuka' },
-              { icon: '📍', label: 'Terverifikasi', desc: 'foto & lokasi penerima terdokumentasi' },
+              { icon: '🤝', label: 'Rencana 15% komisi', desc: 'akan disisihkan setelah komisi afiliasi diterima' },
+              { icon: '📋', label: 'Transparan', desc: 'laporan akan dipublikasikan setelah penyaluran terjadi' },
+              { icon: '📍', label: 'Terdokumentasi', desc: 'dokumentasi penyaluran akan ditampilkan saat tersedia' },
             ].map(item => (
               <div key={item.label} className="text-center">
                 <p className="text-3xl mb-2">{item.icon}</p>

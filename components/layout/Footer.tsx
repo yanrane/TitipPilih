@@ -37,8 +37,7 @@ export async function Footer() {
               <span className="text-primary">Pilih</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Review skincare jujur dari kurator terpercaya. Setiap pembelian
-              melalui link kami berkontribusi untuk sesama.
+              Rekomendasi skincare dan informasi afiliasi yang dijelaskan secara terbuka.
             </p>
             {totalDonasi > 0 && (
               <div className="mt-2">
