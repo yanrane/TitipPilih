@@ -72,7 +72,7 @@ export function ProductSidebar({
 
         {/* CTA — tracked affiliate link */}
         <a
-                    href={`/go/${productSlug}?src=web&utm_campaign=site-product-detail`}
+          href={`/go/${productSlug}?src=web&utm_campaign=site-product-detail&cid=web-detail-${productSlug}`}
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-primary text-primary-foreground font-bold rounded-xl hover:bg-primary/90 transition-colors text-sm"

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { buildAffiliateSubId, cleanParam } from '@/lib/tracking'
+import { witaDayStartDaysAgo, witaStartOfDay } from '@/lib/affiliateAnalytics'
 
 function unauthorized() {
   return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 })
@@ -22,10 +23,8 @@ export async function GET(request: NextRequest) {
   }
 
   const now = new Date()
-  const startToday = new Date(now)
-  startToday.setHours(0, 0, 0, 0)
-  const start7Days = new Date(now)
-  start7Days.setDate(now.getDate() - 7)
+  const startToday = witaStartOfDay(now)
+  const start7Days = witaDayStartDaysAgo(now, 6)
 
   try {
     const requestedSubIds = parseRequestedSubIds(url.searchParams)
